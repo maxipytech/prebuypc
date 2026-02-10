@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreBuyPc - Expert Computer & Laptop Consultation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f1419;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 20, 25, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.4em;
+            color: #0f1419;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 80px 80px;
+            position: relative;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5em;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ffffff 0%, #D4A574 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .value-prop {
+            background: rgba(212, 165, 116, 0.1);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .value-prop p {
+            font-size: 1.15em;
+            font-weight: 500;
+            color: #D4A574;
+            margin: 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 18px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
+            color: #0f1419;
+            border: 2px solid transparent;
+            font-weight: 700;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .device-showcase {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .device-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .device-slide.active {
+            opacity: 1;
+        }
+
+        .device-slide:nth-child(1) {
+            background-image: url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=90');
+        }
+
+        .device-slide:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&q=90');
+        }
+
+        .device-slide:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=90');
+        }
+
+        .device-slide:nth-child(4) {
+            background-image: url('static/images/gaming laptops.png');
+        }
+
+        .device-slide:nth-child(5) {
+            background-image: url('https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=800&q=90');
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .device-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.3) 0%, rgba(201, 152, 74, 0.3) 100%);
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .device-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #D4A574;
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        .device-label {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(15, 20, 25, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+            color: #D4A574;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .device-label.show {
+            opacity: 1;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 40px 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .trust-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .trust-item h3 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #D4A574;
+            margin-bottom: 5px;
+        }
+
+        .trust-item p {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 80px;
+            background: linear-gradient(180deg, #0f1419 0%, #1a1f2e 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(212, 165, 116, 0.5);
+        }
+
+        .service-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 120px 80px;
+            background: #0f1419;
+        }
+
+        .process-steps {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin: 0 auto 30px;
+            color: #0f1419;
+        }
+
+        .step-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .step-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 80px;
+            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            color: #0f1419;
+        }
+
+        .cta-section p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            color: #0f1419;
+        }
+
+        .cta-section .cta-btn {
+            background: #0f1419;
+            color: #D4A574;
+            font-weight: 700;
+        }
+
+        .cta-section .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #050810;
+            padding: 80px 80px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #D4A574;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2em;
+        }
+
+        .social-links a:hover {
+            background: #D4A574;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: rgba(15, 20, 25, 0.98);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(212, 165, 116, 0.3);
+            z-index: 999;
+            transition: right 0.4s ease;
+            padding: 100px 40px 40px;
+            overflow-y: auto;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .side-menu-header {
+            margin-bottom: 30px;
+        }
+
+        .side-menu-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #D4A574;
+            margin-bottom: 5px;
+        }
+
+        .side-menu-header p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+        }
+
+        .menu-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(212, 165, 116, 0.2);
+            border: 1px solid rgba(212, 165, 116, 0.4);
+            border-radius: 50%;
+            color: #D4A574;
+            font-size: 1.8em;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .menu-close:hover {
+            transform: rotate(90deg);
+            background: rgba(212, 165, 116, 0.3);
+            border-color: #D4A574;
+        }
+
+        .menu-close-bottom {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(15, 20, 25, 1) 0%, rgba(15, 20, 25, 0.95) 70%, transparent 100%);
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-close-btn {
+            width: 100%;
+            padding: 14px;
+            background: rgba(212, 165, 116, 0.15);
+            border: 1px solid rgba(212, 165, 116, 0.4);
+            border-radius: 8px;
+            color: #D4A574;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .menu-close-btn:hover {
+            background: rgba(212, 165, 116, 0.25);
+            border-color: #D4A574;
+            transform: translateY(-2px);
+        }
+
+        .menu-close-btn:active {
+            transform: translateY(0);
+        }
+
+        .side-menu-links {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .side-menu-links li {
+            margin-bottom: 8px;
+        }
+
+        .side-menu-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+
+        .side-menu-links a:hover {
+            color: #D4A574;
+            background: rgba(212, 165, 116, 0.1);
+        }
+
+        .side-menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 25px 0;
+        }
+
+        .side-menu-social {
+            margin-top: 25px;
+            padding-bottom: 20px;
+        }
+
+        .side-menu-social h4 {
+            color: #D4A574;
+            margin-bottom: 15px;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .social-menu-links {
+            list-style: none;
+        }
+
+        .social-menu-links li {
+            margin-bottom: 10px;
+        }
+
+        .social-menu-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-menu-links a:hover {
+            background: rgba(212, 165, 116, 0.15);
+            border-color: rgba(212, 165, 116, 0.4);
+            transform: translateX(-3px);
+        }
+
+        .social-icon {
+            font-size: 1.3em;
+            width: 28px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .social-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .social-name {
+            font-weight: 600;
+            font-size: 0.95em;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .social-handle {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.6);
+            display: block;
+        }
+
+        /* Custom Build Section */
+        .custom-build {
+            padding: 120px 80px;
+            background: linear-gradient(180deg, #0f1419 0%, #1a1f2e 100%);
+        }
+
+        .custom-build-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .custom-build-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .build-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .build-feature {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .build-feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(212, 165, 116, 0.5);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5em;
+            color: #0f1419;
+        }
+
+        .build-feature h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .build-feature p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .custom-build-image {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            min-height: 600px;
+        }
+
+        .custom-build-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            max-height: 400px;
+        }
+
+        .build-overlay {
+            display: none;
+        }
+
+        .build-badge {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(15, 20, 25, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 10;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .badge-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+
+        .badge-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .badge-text strong {
+            font-weight: 600;
+            font-size: 1em;
+            color: #D4A574;
+        }
+
+        .badge-text span {
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 3em;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .trust-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .nav-container {
+                padding: 20px;
+            }
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+            .device-showcase {
+                height: 350px;
+            }
+            .side-menu {
+                width: 280px;
+                padding: 90px 25px 30px;
+            }
+            
+            .menu-close {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.6em;
+            }
+            
+            .side-menu-header h3 {
+                font-size: 1.5em;
+            }
+            
+            .trust-bar,
+            .services,
+            .process,
+            .cta-section,
+            footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5em;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+            
+            .custom-build {
+                padding: 80px 20px;
+            }
+
+            .custom-build-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .custom-build-image {
+                height: 350px;
+                order: -1;
+            }
+
+            .build-badge {
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+                padding: 15px 20px;
+            }
+
+            .badge-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+
+            .badge-text strong {
+                font-size: 1em;
+            }
+
+            .badge-text span {
+                font-size: 0.85em;
+            }
+            
+            
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="logo-img">
+                    <img src="static/images/prebuypc logo rounded.png" alt="PrebuyPc logo" style="width: 40px; height: 40px; border-radius: 50%;">
+                </div>
+                <div class="logo-text">PreBuyPc</div>
+            </div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#process">How It Works</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="menuToggle" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <button class="menu-close" id="menuClose" aria-label="Close menu">×</button>
+        <div class="side-menu-header">
+            <h3>Menu</h3>
+            <p>Navigate & Connect</p>
+        </div>
+        <ul class="side-menu-links">
+            <li><a href="#services" class="menu-link">Services</a></li>
+            <li><a href="#process" class="menu-link">How It Works</a></li>
+            <li><a href="#contact" class="menu-link">Contact</a></li>
+        </ul>
+        <div class="side-menu-divider"></div>
+        <div class="side-menu-social">
+            <h4>Connect With Us</h4>
+            <ul class="social-menu-links">
+                <li>
+                    <a href="https://wa.me/254721899388" target="_blank" rel="noopener">
+                        <span class="social-icon">💬</span>
+                        <div class="social-info">
+                            <span class="social-name">WhatsApp</span>
+                            <span class="social-handle">+254 721 899 388</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/@maxipytech" target="_blank" rel="noopener">
+                        <span class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        </span>
+                        <div class="social-info">
+                            <span class="social-name">YouTube</span>
+                            <span class="social-handle">@maxipytech</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com/@prebuypc" target="_blank" rel="noopener">
+                        <span class="social-icon">
+                             <svg viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </span>
+                        <div class="social-info">
+                            <span class="social-name">TikTok</span>
+                            <span class="social-handle">@prebuypc</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/maxipytech" target="_blank" rel="noopener">
+                        <span class="social-icon">📷</span>
+                        <div class="social-info">
+                            <span class="social-name">Instagram</span>
+                            <span class="social-handle">@maxipytech</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-close-bottom">
+            <button class="menu-close-btn" id="menuCloseBottom">
+                <span>×</span>
+                <span>Close Menu</span>
+            </button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Don't Just Buy a Computer - Invest in the Right One.</h1>
+                <div class="value-prop">
+                    <p>Save time and money with expert-backed recommendations tailored to your exact needs</p>
+                </div>
+                <p>At PreBuyPc, we help you choose laptops and computers that match your real needs</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.link/7t4uox" class="cta-btn cta-primary">💬 Get Free Consultation</a>
+                    <a href="#process" class="cta-btn cta-secondary">How We Help</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="device-showcase">
+                    <div class="device-slide active"></div>
+                    <div class="device-slide"></div>
+                    <div class="device-slide"></div>
+                    <div class="device-slide"></div>
+                    <div class="device-slide"></div>
+                    <div class="device-overlay"></div>
+                    <div class="device-label show">Premium Laptops</div>
+                    <div class="device-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                        <div class="indicator" data-index="2"></div>
+                        <div class="indicator" data-index="3"></div>
+                        <div class="indicator" data-index="4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item">
+                <h3>77+</h3>
+                <p>Happy Customers</p>
+            </div>
+            <div class="trust-item">
+                <h3>98%</h3>
+                <p>Satisfaction Rate</p>
+            </div>
+            <div class="trust-item">
+                <h3>24/7</h3>
+                <p>Support Available</p>
+            </div>
+            <div class="trust-item">
+                <h3>100%</h3>
+                <p>Expert Guidance</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Why Choose PreBuyPc?</h2>
+            <p>We provide comprehensive computer consultation services designed to save you time, money, and frustration</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Expert Guidance</h3>
+                <p>Tailored recommendations based on your specific goals and budget constraints. Our consultants have years of experience in matching users with perfect devices.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Honest Reviews</h3>
+                <p>Clear specs breakdowns without overwhelming tech jargon or marketing fluff. We tell you what matters and what doesn't for your use case.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>For Everyone</h3>
+                <p>Solutions designed for individuals, startups, and established businesses alike. From students to enterprise clients, we've got you covered.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Trusted Partners</h3>
+                <p>Access to verified suppliers and quality-checked devices you can rely on. We've vetted every partner to ensure you get genuine products.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Budget Optimization</h3>
+                <p>Get the best value for your money. We help you avoid overspending on features you don't need and invest in what truly matters.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>Post-Purchase Support</h3>
+                <p>Our relationship doesn't end at purchase. We provide ongoing support to ensure you're getting the most from your investment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom PC Building Section -->
+    <section class="custom-build">
+        <div class="custom-build-container">
+            <div class="custom-build-content">
+                <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                    <h2>Custom PC Building Services</h2>
+                    <p style="margin: 0;">From gaming rigs to business workstations - we build PCs tailored to your exact specifications</p>
+                </div>
+                <div class="build-features">
+                    <div class="build-feature">
+                        <div class="feature-icon">1</div>
+                        <div class="feature-content">
+                            <h4>Gaming PCs</h4>
+                            <p>High-performance builds optimized for the latest games. From budget-friendly 1080p setups to ultra-high-end 4K gaming monsters.</p>
+                        </div>
+                    </div>
+                    <div class="build-feature">
+                        <div class="feature-icon">2</div>
+                        <div class="feature-content">
+                            <h4>Business Workstations</h4>
+                            <p>Reliable, efficient systems for productivity, content creation, and professional applications. Built for stability and longevity.</p>
+                        </div>
+                    </div>
+                    <div class="build-feature">
+                        <div class="feature-icon">3</div>
+                        <div class="feature-content">
+                            <h4>Expert Assembly</h4>
+                            <p>Professional cable management, optimal cooling solutions, and thorough testing. Every build comes with warranty and support.</p>
+                        </div>
+                    </div>
+                    <div class="build-feature">
+                        <div class="feature-icon">4</div>
+                        <div class="feature-content">
+                            <h4>Future-Proof Design</h4>
+                            <p>Upgradeable components and smart part selection to ensure your PC stays relevant for years to come.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://wa.link/7t4uox" class="cta-btn cta-primary" style="margin-top: 30px;">💬 Discuss Your Custom Build</a>
+            </div>
+            <div class="custom-build-image">
+                <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&q=90" alt="Custom PC Building" />
+                <div class="build-overlay"></div>
+                <div class="build-badge">
+                    <div class="badge-icon"></div>
+                    <div class="badge-text">
+                        <strong>Quality Guaranteed</strong>
+                        <span>Every component tested</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="section-header">
+            <h2>How We Help You</h2>
+            <p>A simple, proven process that guarantees the right computer choice</p>
+        </div>
+        <div class="process-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Tell Us What You Need</h3>
+                <p>Personal or business? Performance or portability? We listen to understand your unique requirements through a detailed consultation.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>We Recommend the Best Options</h3>
+                <p>Handpicked models that perfectly match your needs and budget constraints. We provide detailed comparisons and honest assessments.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>You Buy with Confidence</h3>
+                <p>Save money and avoid costly mistakes with our expert-backed recommendations. We guide you through the entire purchase process.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <h2>Ready to Find the Perfect Computer?</h2>
+        <p>Join hundreds of satisfied customers who made the smart choice</p>
+        <a href="https://wa.link/7t4uox" class="cta-btn">💬 Start Your Free Consultation Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>PreBuyPc</h3>
+                <p>Expert computer consultation services helping you make informed technology investments. Save time, money, and frustration with our proven guidance.</p>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@maxipytech" target="_blank" rel="noopener" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@prebuypc" target="_blank" rel="noopener" aria-label="TikTok">
+                         <svg viewBox="0 0 24 24">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/maxipytech" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+                     <a href="https://cliomaxin.github.io/maksimfelix/patreon.html" target="_blank" rel="noopener noreferrer" aria-label="Patreon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15.386.524c-4.764 0-8.64 3.876-8.64 8.64 0 4.75 3.876 8.613 8.64 8.613 4.75 0 8.614-3.864 8.614-8.613C24 4.4 20.136.524 15.386.524M.003 23.537h4.22V.524H.003"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">How It Works</a></li>
+                    <li><a href="https://wa.link/7t4uox">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:maxipytech@gmail.com">maxipytech@gmail.com</a></li>
+                    <li><a href="https://wa.me/254721899388">+254 721 899 388</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 PreBuyPc. All Rights Reserved. | Smart Computer Solutions for Every Need.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Slideshow functionality
+        const slides = document.querySelectorAll('.device-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const deviceLabel = document.querySelector('.device-label');
+        const labels = [
+            'Premium Laptops',
+            'Custom Gaming PCs',
+            'Graphics Cards',
+            'Gaming Laptops',
+            'PC Components'
+        ];
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            
+            deviceLabel.classList.remove('show');
+            setTimeout(() => {
+                deviceLabel.textContent = labels[index];
+                deviceLabel.classList.add('show');
+            }, 200);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function startSlideshow() {
+            slideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopSlideshow() {
+            clearInterval(slideInterval);
+        }
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                stopSlideshow();
+                currentSlide = index;
+                showSlide(currentSlide);
+                startSlideshow();
+            });
+        });
+
+        const showcase = document.querySelector('.device-showcase');
+        showcase.addEventListener('mouseenter', stopSlideshow);
+        showcase.addEventListener('mouseleave', startSlideshow);
+
+        startSlideshow();
+
+        // Side menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const menuCloseBottom = document.getElementById('menuCloseBottom');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function openMenu() {
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuCloseBottom.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
