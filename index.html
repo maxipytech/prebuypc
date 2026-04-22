@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>PreBuyPc - Expert Computer & Laptop Consultation</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -10,6 +10,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        hr {
+            display: none;
+            border: solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+            width: 100%;
         }
 
         body {
@@ -20,6 +27,7 @@
             line-height: 1.6;
         }
 
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -82,6 +90,7 @@
             color: #ffffff;
         }
 
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -193,43 +202,42 @@
             overflow: hidden;
         }
 
-        .device-slide {
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .device-image {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background-size: cover;
             background-position: center;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
         }
 
-        .device-slide.active {
+        .device-image.active {
             opacity: 1;
         }
 
-        .device-slide:nth-child(1) {
+        .device-image:nth-child(1) {
             background-image: url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=90');
         }
 
-        .device-slide:nth-child(2) {
+        .device-image:nth-child(2) {
             background-image: url('https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&q=90');
         }
 
-        .device-slide:nth-child(3) {
+        .device-image:nth-child(3) {
             background-image: url('https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=90');
         }
 
-        .device-slide:nth-child(4) {
-            background-image: url('static/images/gaming laptops.png');
+        .device-image:nth-child(4) {
+            background-image: url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&q=90');
         }
 
-        .device-slide:nth-child(5) {
-            background-image: url('https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=800&q=90');
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .device-image:nth-child(5) {
+            background-image: url('static/images/gaming\ laptops.png');
         }
 
         .device-overlay {
@@ -237,57 +245,11 @@
             inset: 0;
             background: linear-gradient(135deg, rgba(212, 165, 116, 0.3) 0%, rgba(201, 152, 74, 0.3) 100%);
             border-radius: 20px;
+            z-index: 10;
             pointer-events: none;
-            z-index: 1;
         }
 
-        .device-indicators {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            z-index: 10;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .indicator.active {
-            background: #D4A574;
-            width: 32px;
-            border-radius: 6px;
-        }
-
-        .device-label {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            background: rgba(15, 20, 25, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95em;
-            color: #D4A574;
-            border: 1px solid rgba(212, 165, 116, 0.3);
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .device-label.show {
-            opacity: 1;
-        }
-
-        /* Trust Bar */
+        /* Trust Signals */
         .trust-bar {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
@@ -423,6 +385,70 @@
             line-height: 1.7;
         }
 
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 80px;
+            background: linear-gradient(180deg, #0f1419 0%, #1a1f2e 100%);
+        }
+
+        .testimonial-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .testimonial-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .author-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+        }
+
         /* CTA Section */
         .cta-section {
             padding: 120px 80px;
@@ -465,7 +491,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 60px;
             margin-bottom: 60px;
         }
@@ -505,6 +531,33 @@
             color: #D4A574;
         }
 
+        .copy-btn {
+            margin-left: 10px;
+            background: rgba(212, 165, 116, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(212, 165, 116, 0.3);
+            border-color: #D4A574;
+        }
+
+        .copy-btn:focus {
+            outline: 2px solid rgba(212, 165, 116, 0.6);
+            outline-offset: 2px;
+        }
+
+        .payment-value {
+            font-family: 'Courier New', Courier, monospace;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
         .social-links {
             display: flex;
             gap: 15px;
@@ -521,7 +574,7 @@
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s;
-            font-size: 1.2em;
+            color: white;
         }
 
         .social-links a:hover {
@@ -535,9 +588,13 @@
             padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: rgba(255, 255, 255, 0.5);
         }
 
+        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -545,372 +602,41 @@
             color: white;
             font-size: 1.5em;
             cursor: pointer;
-            z-index: 1001;
-            position: relative;
         }
 
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 320px;
-            height: 100vh;
-            background: rgba(15, 20, 25, 0.98);
-            backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(212, 165, 116, 0.3);
-            z-index: 999;
-            transition: right 0.4s ease;
-            padding: 100px 40px 40px;
-            overflow-y: auto;
-            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .side-menu.active {
-            right: 0;
-        }
-
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 998;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-
-        .menu-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .side-menu-header {
-            margin-bottom: 30px;
-        }
-
-        .side-menu-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8em;
-            color: #D4A574;
-            margin-bottom: 5px;
-        }
-
-        .side-menu-header p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9em;
-        }
-
-        .menu-close {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(212, 165, 116, 0.2);
-            border: 1px solid rgba(212, 165, 116, 0.4);
-            border-radius: 50%;
-            color: #D4A574;
-            font-size: 1.8em;
-            cursor: pointer;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-
-        .menu-close:hover {
-            transform: rotate(90deg);
-            background: rgba(212, 165, 116, 0.3);
-            border-color: #D4A574;
-        }
-
-        .menu-close-bottom {
-            position: sticky;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin-top: 30px;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(15, 20, 25, 1) 0%, rgba(15, 20, 25, 0.95) 70%, transparent 100%);
-            backdrop-filter: blur(10px);
-        }
-
-        .menu-close-btn {
-            width: 100%;
-            padding: 14px;
-            background: rgba(212, 165, 116, 0.15);
-            border: 1px solid rgba(212, 165, 116, 0.4);
-            border-radius: 8px;
-            color: #D4A574;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .menu-close-btn:hover {
-            background: rgba(212, 165, 116, 0.25);
-            border-color: #D4A574;
-            transform: translateY(-2px);
-        }
-
-        .menu-close-btn:active {
-            transform: translateY(0);
-        }
-
-        .side-menu-links {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .side-menu-links li {
-            margin-bottom: 8px;
-        }
-
-        .side-menu-links a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-size: 1.05em;
-            font-weight: 500;
-            transition: color 0.3s;
-            display: block;
-            padding: 12px 15px;
-            border-radius: 8px;
-        }
-
-        .side-menu-links a:hover {
-            color: #D4A574;
-            background: rgba(212, 165, 116, 0.1);
-        }
-
-        .side-menu-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 25px 0;
-        }
-
-        .side-menu-social {
-            margin-top: 25px;
-            padding-bottom: 20px;
-        }
-
-        .side-menu-social h4 {
-            color: #D4A574;
-            margin-bottom: 15px;
-            font-size: 1em;
-            font-weight: 600;
-        }
-
-        .social-menu-links {
-            list-style: none;
-        }
-
-        .social-menu-links li {
-            margin-bottom: 10px;
-        }
-
-        .social-menu-links a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-menu-links a:hover {
-            background: rgba(212, 165, 116, 0.15);
-            border-color: rgba(212, 165, 116, 0.4);
-            transform: translateX(-3px);
-        }
-
-        .social-icon {
-            font-size: 1.3em;
-            width: 28px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .social-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .social-name {
-            font-weight: 600;
-            font-size: 0.95em;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .social-handle {
-            font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.6);
-            display: block;
-        }
-
-        /* Custom Build Section */
-        .custom-build {
-            padding: 120px 80px;
-            background: linear-gradient(180deg, #0f1419 0%, #1a1f2e 100%);
-        }
-
-        .custom-build-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .custom-build-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .build-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .build-feature {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            transition: all 0.3s;
-        }
-
-        .build-feature:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(212, 165, 116, 0.5);
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
-            border-radius: 12px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.5em;
-            color: #0f1419;
-        }
-
-        .build-feature h4 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .build-feature p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-
-        .custom-build-image {
-            position: relative;
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
-            min-height: 600px;
-        }
-
-        .custom-build-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 1;
-            max-width: 1100px;
-            max-height: 400px;
-        }
-
-        .build-overlay {
-            display: none;
-        }
-
-        .build-badge {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            background: rgba(15, 20, 25, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 20px 30px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 10;
-            border: 1px solid rgba(212, 165, 116, 0.3);
-        }
-
-        .badge-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #D4A574 0%, #C9984A 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            flex-shrink: 0;
-        }
-
-        .badge-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .badge-text strong {
-            font-weight: 600;
-            font-size: 1em;
-            color: #D4A574;
-        }
-
-        .badge-text span {
-            font-size: 0.85em;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
+        /* Responsive Design */
         @media (max-width: 1024px) {
+            .nav-container,
+            .hero,
+            .trust-bar,
+            .services,
+            .process,
+            .testimonials,
+            .cta-section,
+            footer {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
             .hero-container {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
+
             .hero-content h1 {
-                font-size: 3em;
+                font-size: 3.5em;
             }
-            .mobile-menu-btn {
-                display: block;
-            }
+
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .trust-container {
-                grid-template-columns: repeat(2, 1fr);
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -918,220 +644,291 @@
             .nav-links {
                 display: none;
             }
+
             .mobile-menu-btn {
                 display: block;
             }
-            .nav-container {
-                padding: 20px;
+
+            .nav-links.active {
+                display: flex !important;
             }
-            .hero {
-                padding: 100px 20px 60px;
+
+            .nav-links.active .mobile-social-links {
+                display: flex;
             }
-            .hero-content h1 {
-                font-size: 2.2em;
+
+            .nav-links.active .mobile-phone-text {
+                display: block;
             }
-            .device-showcase {
-                height: 350px;
+
+            .nav-links.active .mobile-payment-details {
+                display: block;
             }
-            .side-menu {
-                width: 280px;
-                padding: 90px 25px 30px;
-            }
-            
-            .menu-close {
-                top: 15px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.6em;
-            }
-            
-            .side-menu-header h3 {
-                font-size: 1.5em;
-            }
-            
+
+            .nav-container,
+            .hero,
             .trust-bar,
             .services,
             .process,
+            .testimonials,
             .cta-section,
             footer {
                 padding-left: 20px;
                 padding-right: 20px;
             }
-            
+
+            .hero {
+                padding-top: 100px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            .trust-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
             .section-header h2 {
                 font-size: 2.5em;
             }
-            
+
             .services-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-            
-            .custom-build {
-                padding: 80px 20px;
-            }
 
-            .custom-build-container {
+            .process-steps {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
 
-            .custom-build-image {
-                height: 350px;
-                order: -1;
+            .cta-section h2 {
+                font-size: 2.5em;
             }
 
-            .build-badge {
-                bottom: 20px;
-                left: 20px;
-                right: 20px;
-                padding: 15px 20px;
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .badge-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2em;
+            .cta-buttons {
+                flex-direction: column;
             }
 
-            .badge-text strong {
-                font-size: 1em;
+            .cta-btn {
+                width: 100%;
+                text-align: center;
             }
+        }
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+        }
 
-            .badge-text span {
-                font-size: 0.85em;
-            }
-            
-            
+        /* Mobile Menu Active State */
+        .nav-links.active {
+            display: flex !important;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            background: rgba(15, 20, 25, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .nav-links.active a {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links.active a:last-child {
+            border-bottom: none;
+        }
+
+        .nav-links.active hr {
+            display: block;
+        }
+
+        /* Blur overlay for mobile menu */
+        body.menu-open::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            backdrop-filter: blur(4px);
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* Mobile social links */
+        .mobile-social-links {
+            display: none;
+            flex-direction: row;
+            gap: 15px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            justify-content: flex-start;
+        }
+
+        .mobile-social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            padding: 0;
+            color: white;
+        }
+
+        .mobile-phone-text {
+            display: none;
+            width: 100%;
+            margin-top: 12px;
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .mobile-phone-text a {
+            color: #D4A574;
+            text-decoration: none;
+        }
+
+        .mobile-payment-details {
+            display: none;
+            width: 100%;
+            margin-top: 12px;
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .mobile-payment-details h4 {
+            color: #D4A574;
+            margin-bottom: 15px;
+            font-size: 1em;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .mobile-payment-details div {
+            margin-bottom: 8px;
+        }
+
+        .mobile-payment-details div:last-child {
+            margin-bottom: 0;
+        }
+
+        .mobile-social-links a:hover {
+            background: rgba(212, 165, 116, 0.5);
+            transform: translateY(-3px);
+            border-color: #D4A574;
+        }
+
+        .mobile-social-links svg {
+            width: 22px;
+            height: 22px;
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo-container">
                 <div class="logo-img">
-                    <img src="static/images/prebuypc logo rounded.png" alt="PrebuyPc logo" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <img src="static/images/prebuypc logo rounded.png" loading="lazy" alt="PrebuyPc logo" style="width: 40px; height: 40px; border-radius: 50%;">
                 </div>
                 <div class="logo-text">PreBuyPc</div>
             </div>
+
             <div class="nav-links">
                 <a href="#services">Services</a>
                 <a href="#process">How It Works</a>
+                <a href="#testimonials">Testimonials</a>
                 <a href="#contact">Contact</a>
+                <div class="mobile-social-links">
+                    <a href="https://www.youtube.com/@prebuypc" target="_blank" rel="noopener" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="white">
+                            <path d="M23.5 6.2a2.9 2.9 0 0 0-2-2C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.7a2.9 2.9 0 0 0-2 2A30.7 30.7 0 0 0 0 12a30.7 30.7 0 0 0 .5 5.8 2.9 2.9 0 0 0 2 2c1.8.7 9.5.7 9.5.7s7.7 0 9.5-.7a2.9 2.9 0 0 0 2-2A30.7 30.7 0 0 0 24 12a30.7 30.7 0 0 0-.5-5.8zM9.6 15.5v-7l6.4 3.5-6.4 3.5z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@prebuypc" target="_blank" rel="noopener" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="white">
+                            <path d="M16.6 5.8a5.5 5.5 0 0 1-3.2-1V14a4 4 0 1 1-4-4c.3 0 .7 0 1 .1v2.2a2 2 0 1 0 2 2V2h2a5.5 5.5 0 0 0 2.2 3.8z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/prebuypc" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="white">
+                            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm4.8-2.3a1.3 1.3 0 1 0 1.3 1.3 1.3 1.3 0 0 0-1.3-1.3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.link/f1lyci" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                            <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                        </svg>
+                    </a>
+                </div>
+                <hr>
+                <div class="mobile-phone-text">Telephone Number: <a href="tel:+254721899388" class="payment-value">+254 721 899 388</a></div>
+                <hr>
+                <div class="mobile-payment-details">
+                    <h4>Payment Details:</h4>
+                    <div>Paybill: <span class="payment-value">400200</span><button class="copy-btn" type="button" data-copy="400200">Copy</button></div>
+                    <div>Account: <span class="payment-value">1103917</span><button class="copy-btn" type="button" data-copy="1103917">Copy</button></div>
+                </div>
             </div>
-            <button class="mobile-menu-btn" id="menuToggle" aria-label="Menu">☰</button>
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
         </div>
     </nav>
 
-    <!-- Side Menu -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-    <div class="side-menu" id="sideMenu">
-        <button class="menu-close" id="menuClose" aria-label="Close menu">×</button>
-        <div class="side-menu-header">
-            <h3>Menu</h3>
-            <p>Navigate & Connect</p>
-        </div>
-        <ul class="side-menu-links">
-            <li><a href="#services" class="menu-link">Services</a></li>
-            <li><a href="#process" class="menu-link">How It Works</a></li>
-            <li><a href="#contact" class="menu-link">Contact</a></li>
-        </ul>
-        <div class="side-menu-divider"></div>
-        <div class="side-menu-social">
-            <h4>Connect With Us</h4>
-            <ul class="social-menu-links">
-                <li>
-                    <a href="https://wa.me/254721899388" target="_blank" rel="noopener">
-                        <span class="social-icon">💬</span>
-                        <div class="social-info">
-                            <span class="social-name">WhatsApp</span>
-                            <span class="social-handle">+254 721 899 388</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/@maxipytech" target="_blank" rel="noopener">
-                        <span class="social-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                        </span>
-                        <div class="social-info">
-                            <span class="social-name">YouTube</span>
-                            <span class="social-handle">@maxipytech</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.tiktok.com/@prebuypc" target="_blank" rel="noopener">
-                        <span class="social-icon">
-                             <svg viewBox="0 0 24 24">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                            </svg>
-                        </span>
-                        <div class="social-info">
-                            <span class="social-name">TikTok</span>
-                            <span class="social-handle">@prebuypc</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/maxipytech" target="_blank" rel="noopener">
-                        <span class="social-icon">📷</span>
-                        <div class="social-info">
-                            <span class="social-name">Instagram</span>
-                            <span class="social-handle">@maxipytech</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="menu-close-bottom">
-            <button class="menu-close-btn" id="menuCloseBottom">
-                <span>×</span>
-                <span>Close Menu</span>
-            </button>
-        </div>
-    </div>
-
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Don't Just Buy a Computer - Invest in the Right One.</h1>
+                <h1>All you know is -
+<i>You need a laptop / computer</i></h1>
                 <div class="value-prop">
-                    <p>Save time and money with expert-backed recommendations tailored to your exact needs</p>
+                    <p>You are not a tech expert. You do not need to be.
+You have a budget. You have a goal.
+Tell us both. We will match you with the right laptop or computer.</p>
                 </div>
-                <p>At PreBuyPc, we help you choose laptops and computers that match your real needs</p>
+                <p>At PreBuyPc, we help you choose laptops and computers that match your real needs.</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.link/7t4uox" class="cta-btn cta-primary">💬 Get Free Consultation</a>
+                    <a href="https://wa.link/f1lyci" class="cta-btn cta-primary">Book Consultation</a>
                     <a href="#process" class="cta-btn cta-secondary">How We Help</a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="device-showcase">
-                    <div class="device-slide active"></div>
-                    <div class="device-slide"></div>
-                    <div class="device-slide"></div>
-                    <div class="device-slide"></div>
-                    <div class="device-slide"></div>
+                    <div class="device-image active"></div>
+                    <div class="device-image"></div>
+                    <div class="device-image"></div>
+                    <div class="device-image"></div>
+                    <div class="device-image"></div>
                     <div class="device-overlay"></div>
-                    <div class="device-label show">Premium Laptops</div>
-                    <div class="device-indicators">
-                        <div class="indicator active" data-index="0"></div>
-                        <div class="indicator" data-index="1"></div>
-                        <div class="indicator" data-index="2"></div>
-                        <div class="indicator" data-index="3"></div>
-                        <div class="indicator" data-index="4"></div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1141,7 +938,7 @@
     <div class="trust-bar">
         <div class="trust-container">
             <div class="trust-item">
-                <h3>77+</h3>
+                <h3>33+</h3>
                 <p>Happy Customers</p>
             </div>
             <div class="trust-item">
@@ -1199,63 +996,6 @@
         </div>
     </section>
 
-    <!-- Custom PC Building Section -->
-    <section class="custom-build">
-        <div class="custom-build-container">
-            <div class="custom-build-content">
-                <div class="section-header" style="text-align: left; margin-bottom: 40px;">
-                    <h2>Custom PC Building Services</h2>
-                    <p style="margin: 0;">From gaming rigs to business workstations - we build PCs tailored to your exact specifications</p>
-                </div>
-                <div class="build-features">
-                    <div class="build-feature">
-                        <div class="feature-icon">1</div>
-                        <div class="feature-content">
-                            <h4>Gaming PCs</h4>
-                            <p>High-performance builds optimized for the latest games. From budget-friendly 1080p setups to ultra-high-end 4K gaming monsters.</p>
-                        </div>
-                    </div>
-                    <div class="build-feature">
-                        <div class="feature-icon">2</div>
-                        <div class="feature-content">
-                            <h4>Business Workstations</h4>
-                            <p>Reliable, efficient systems for productivity, content creation, and professional applications. Built for stability and longevity.</p>
-                        </div>
-                    </div>
-                    <div class="build-feature">
-                        <div class="feature-icon">3</div>
-                        <div class="feature-content">
-                            <h4>Expert Assembly</h4>
-                            <p>Professional cable management, optimal cooling solutions, and thorough testing. Every build comes with warranty and support.</p>
-                        </div>
-                    </div>
-                    <div class="build-feature">
-                        <div class="feature-icon">4</div>
-                        <div class="feature-content">
-                            <h4>Future-Proof Design</h4>
-                            <p>Upgradeable components and smart part selection to ensure your PC stays relevant for years to come.</p>
-                        </div>
-                    </div>
-                </div>
-                <a href="https://wa.link/7t4uox" class="cta-btn cta-primary" style="margin-top: 30px;">💬 Discuss Your Custom Build</a>
-            </div>
-            <div class="custom-build-image">
-                <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=800&q=90" alt="Custom PC Building" />
-                <div class="build-overlay"></div>
-                <div class="build-badge">
-                    <div class="badge-icon"></div>
-                    <div class="badge-text">
-                        <strong>Quality Guaranteed</strong>
-                        <span>Every component tested</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process" class="process">
-
     <!-- Process Section -->
     <section id="process" class="process">
         <div class="section-header">
@@ -1281,151 +1021,210 @@
         </div>
     </section>
 
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>Real experiences from people who made the smart choice</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "PreBuyPc helped me find the perfect laptop for my graphic design business. They understood exactly what I needed and saved me from making an expensive mistake. Highly recommended!"
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=face" alt="Sarah Mwangi" loading="lazy">
+                    </div>
+                    <div class="author-info">
+                        <h4>Sarah Mwangi</h4>
+                        <p>Graphic Designer, Nairobi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "As a startup founder, budget was tight. PreBuyPc found us powerful machines within our range and even negotiated better deals with suppliers. True professionals!"
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1560856218-0da41ac7c66a?w=150&h=150&fit=crop&crop=face" alt="James Ochieng" loading="lazy">
+                    </div>
+                    <div class="author-info">
+                        <h4>James Ochieng</h4>
+                        <p>CEO, Tech Startup</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "I had no idea what to look for in a laptop for university. PreBuyPc explained everything clearly and helped me get a device that's perfect for my computer science studies."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?w=150&h=150&fit=crop&crop=face" alt="Amina Hassan" loading="lazy">
+                    </div>
+                    <div class="author-info">
+                        <h4>Amina Hassan</h4>
+                        <p>University Student</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "Their post-purchase support is amazing. They helped me set up my new workstation and even provided tips for optimizing performance. Worth every penny!"
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1638897212550-b0f4c5d8eb3d?w=150&h=150&fit=crop&crop=face" alt="David Kimani" loading="lazy">
+                    </div>
+                    <div class="author-info">
+                        <h4>David Kimani</h4>
+                        <p>Video Editor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section id="contact" class="cta-section">
         <h2>Ready to Find the Perfect Computer?</h2>
-        <p>Join hundreds of satisfied customers who made the smart choice</p>
-        <a href="https://wa.link/7t4uox" class="cta-btn">💬 Start Your Free Consultation Now</a>
+        <p>Join tens of satisfied customers who made the smart choice</p>
+        <a href="https://wa.link/f1lyci" class="cta-btn">Book Consultation Now</a>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>PreBuyPc</h3>
-                <p>Expert computer consultation services helping you make informed technology investments. Save time, money, and frustration with our proven guidance.</p>
-                <div class="social-links">
-                    <a href="https://www.youtube.com/@maxipytech" target="_blank" rel="noopener" aria-label="YouTube">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@prebuypc" target="_blank" rel="noopener" aria-label="TikTok">
-                         <svg viewBox="0 0 24 24">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/maxipytech" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
-                     <a href="https://cliomaxin.github.io/maksimfelix/patreon.html" target="_blank" rel="noopener noreferrer" aria-label="Patreon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15.386.524c-4.764 0-8.64 3.876-8.64 8.64 0 4.75 3.876 8.613 8.64 8.613 4.75 0 8.614-3.864 8.614-8.613C24 4.4 20.136.524 15.386.524M.003 23.537h4.22V.524H.003"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#process">How It Works</a></li>
-                    <li><a href="https://wa.link/7t4uox">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul class="footer-links">
-                    <li><a href="mailto:maxipytech@gmail.com">maxipytech@gmail.com</a></li>
-                    <li><a href="https://wa.me/254721899388">+254 721 899 388</a></li>
-                </ul>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h3>PreBuyPc</h3>
+            <p>Expert computer consultation services helping you make informed technology investments. Save time, money, and frustration with our proven guidance.</p>
+
+            <div class="social-links">
+                <a href="https://www.youtube.com/@prebuypc" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <path d="M23.5 6.2a2.9 2.9 0 0 0-2-2C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.7a2.9 2.9 0 0 0-2 2A30.7 30.7 0 0 0 0 12a30.7 30.7 0 0 0 .5 5.8 2.9 2.9 0 0 0 2 2c1.8.7 9.5.7 9.5.7s7.7 0 9.5-.7a2.9 2.9 0 0 0 2-2A30.7 30.7 0 0 0 24 12a30.7 30.7 0 0 0-.5-5.8zM9.6 15.5v-7l6.4 3.5-6.4 3.5z"/>
+                    </svg>
+                </a>
+
+                <a href="https://www.tiktok.com/@prebuypc" target="_blank" rel="noopener" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <path d="M16.6 5.8a5.5 5.5 0 0 1-3.2-1V14a4 4 0 1 1-4-4c.3 0 .7 0 1 .1v2.2a2 2 0 1 0 2 2V2h2a5.5 5.5 0 0 0 2.2 3.8z"/>
+                    </svg>
+                </a>
+
+                <a href="https://www.instagram.com/prebuypc" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm4.8-2.3a1.3 1.3 0 1 0 1.3 1.3 1.3 1.3 0 0 0-1.3-1.3z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/prebuypc" target="_blank" rel="noopener" aria-label="Whatsapp">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                </a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 PreBuyPc. All Rights Reserved. | Smart Computer Solutions for Every Need.</p>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">How It Works</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="https://wa.link/f1lyci">Book Consultation</a></li>
+            </ul>
         </div>
-    </footer>
 
-    <script>
-        // Slideshow functionality
-        const slides = document.querySelectorAll('.device-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const deviceLabel = document.querySelector('.device-label');
-        const labels = [
-            'Premium Laptops',
-            'Custom Gaming PCs',
-            'Graphics Cards',
-            'Gaming Laptops',
-            'PC Components'
-        ];
-        let currentSlide = 0;
-        let slideInterval;
+        <div class="footer-section">
+            <h4>Talk to Us</h4>
+            <ul class="footer-links">
+                <li><a href="mailto:maxipytech@gmail.com">maxipytech@gmail.com</a></li>
+                <li><a href="https://wa.link/f1lyci">WhatsApp <br>(+254 721 899 388)</a></li>
+                <li>Call / Text: <a href="tel:+254721899388" class="payment-value">+254 721 899 388</a></li>
+            </ul>
+        </div>
 
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-            
-            slides[index].classList.add('active');
-            indicators[index].classList.add('active');
-            
-            deviceLabel.classList.remove('show');
-            setTimeout(() => {
-                deviceLabel.textContent = labels[index];
-                deviceLabel.classList.add('show');
-            }, 200);
-        }
+        <div class="footer-section">
+            <h4>Payment Details</h4>
+            <ul class="footer-links">
+                <li>Paybill: <span class="payment-value">400200</span><button class="copy-btn" type="button" data-copy="400200">Copy</button></li>
+                <li>Account: <span class="payment-value">1103917</span><button class="copy-btn" type="button" data-copy="1103917">Copy</button></li>
+            </ul>
+        </div>
+    </div>
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
+    <div class="footer-bottom">
+        <p>© 2025-2026 PreBuyPc. All Rights Reserved. | Smart Computer Solutions for Every Need.</p>
+    </div>
+</footer>
 
-        function startSlideshow() {
-            slideInterval = setInterval(nextSlide, 4000);
-        }
+<script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
 
-        function stopSlideshow() {
-            clearInterval(slideInterval);
-        }
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    });
 
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                stopSlideshow();
-                currentSlide = index;
-                showSlide(currentSlide);
-                startSlideshow();
-            });
+    // Close menu when a link is clicked
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+    navLinksItems.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open');
         });
+    });
 
-        const showcase = document.querySelector('.device-showcase');
-        showcase.addEventListener('mouseenter', stopSlideshow);
-        showcase.addEventListener('mouseleave', startSlideshow);
-
-        startSlideshow();
-
-        // Side menu functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const menuClose = document.getElementById('menuClose');
-        const menuCloseBottom = document.getElementById('menuCloseBottom');
-        const sideMenu = document.getElementById('sideMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const menuLinks = document.querySelectorAll('.menu-link');
-
-        function openMenu() {
-            sideMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            sideMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        menuToggle.addEventListener('click', openMenu);
-        menuClose.addEventListener('click', closeMenu);
-        menuCloseBottom.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-
-        menuLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
+    // Close menu when social links are clicked
+    const mobileSocialLinks = document.querySelectorAll('.mobile-social-links a');
+    mobileSocialLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open');
         });
+    });
 
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
-                closeMenu();
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('nav') && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
+
+    // Copy payment values
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const value = button.dataset.copy;
+            try {
+                await navigator.clipboard.writeText(value);
+                const originalText = button.textContent;
+                button.textContent = 'Copied';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 1200);
+            } catch (error) {
+                console.error('Copy failed', error);
             }
         });
-    </script>
+    });
+
+    // Image carousel for device showcase
+    const deviceImages = document.querySelectorAll('.device-image');
+    let currentImageIndex = 0;
+
+    setInterval(() => {
+        deviceImages[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % deviceImages.length;
+        deviceImages[currentImageIndex].classList.add('active');
+    }, 5000);
+</script>
 </body>
 </html>
